@@ -35,7 +35,7 @@ class SerialPort(serial.Serial):
         self.receiveBuffer = ""
         self.receiveBuffer = self.serialPort.read(bytesToReceive_a = self.MAX_NUMBER_OF_BYTES_RECEIVED)
         print "Serial in >> " + self.receiveBuffer
-        return
+        return self.receiveBuffer
 
     def writeToPort(self, data_a):
         #For communication with ESP8266 >> data_a + '\r\n'
