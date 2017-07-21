@@ -29,11 +29,11 @@ class SerialPort(serial.Serial):
         self.receiveBuffer = ""
         return
 
-    def readFromPort(self, timeout_a, bytesToReceive_a=5):
+    def readFromPort(self, timeout_a, bytesToReceive_a):
         self.clearReceiveBuffer()
         self.setTimeout(timeout_a)
         self.receiveBuffer = ""
-        self.receiveBuffer = self.serialPort.read(bytesToReceive_a)
+        self.receiveBuffer = self.serialPort.read(bytesToReceive_a = self.MAX_NUMBER_OF_BYTES_RECEIVED)
         print "Serial in >> " + self.receiveBuffer
         return
 
