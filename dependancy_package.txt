@@ -1,0 +1,4 @@
+#Dependancies used in project
+pyserial==2.7
+Adafruit_Nokia_LCD==0.1.0
+Adafruit_GPIO==1.0.3
