@@ -16,9 +16,11 @@ RESPONSE = ""'''
 
 class SerialPort(serial.Serial):
 
-    def __init__(self, port='/dev/ttyS0', baudrate= 115200):
+    def __init__(self, port='/dev/ttyS0', baudrate= 115200, timeout= 60, max_number_of_bytes_received = 1024):
         self.PORT = port
         self.BAUDRATE = baudrate
+        self.MAX_TIMEOUT = timeout
+        self.MAX_NUMBER_OF_BYTES_RECEIVED = max_number_of_bytes_received
         self.serialPort = serial.Serial(self.PORT, self.BAUDRATE)
         return
 
@@ -29,7 +31,7 @@ class SerialPort(serial.Serial):
 
     def readFromPort(self, timeout_a, bytesToReceive_a=5):
         self.clearReceiveBuffer()
-        #setTimeout(timeout_a)
+        self.setTimeout(timeout_a)
         self.receiveBuffer = ""
         self.receiveBuffer = self.serialPort.read(bytesToReceive_a)
         print "Serial in >> " + self.receiveBuffer
@@ -47,12 +49,11 @@ class SerialPort(serial.Serial):
         self.serialPort.reset_output_buffer()
         return
 
-'''
-    def setTimeout(timeout_a = MAX_TIMEOUT):
-        if timeout_a <= MAX_TIMEOUT:
-            openPort.timeout = timeout_a
+    def setTimeout(self, timeout_a):
+        if timeout_a <= self.MAX_TIMEOUT:
+            self.serialPort.timeout = timeout_a
         else:
             raise "Timeout exceeds master timeout"
         return
-'''
+
 
