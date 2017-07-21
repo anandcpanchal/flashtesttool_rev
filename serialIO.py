@@ -25,7 +25,7 @@ class SerialPort(serial.Serial):
         return
 
     def clearReceiveBuffer(self):
-        self.serialPort.reset_input_buffer()
+        self.serialPort.flushInput()
         self.receiveBuffer = ""
         return
 
@@ -46,7 +46,7 @@ class SerialPort(serial.Serial):
         return
 
     def clearSendBuffer(self):
-        self.serialPort.reset_output_buffer()
+        self.serialPort.flushOutput()
         return
 
     def setTimeout(self, timeout_a):

@@ -4,4 +4,4 @@ mySerialPort = serial.SerialPort(port='/dev/ttyS0')
 mySerialPort.clearReceiveBuffer()
 while True:
     mySerialPort.writeToPort("AT")
-    mySerialPort.readFromPort(10)
+    mySerialPort.readFromPort(2)
