@@ -1,4 +1,5 @@
-import serialIO as serial
+from basic import serialIO as serial
+
 
 def testSerialPort():
     print "Connect Rx - Tx together"
